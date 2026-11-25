@@ -208,7 +208,7 @@ const ROOMS = [
   ["rs","Room 7",["Tanu","Akku"]],
   ["rs","Room 9",["Prabal Jiyaji","Yogesh Jiyaji"]],
   ["rs","Room 10",["Bade Papa","Papa"]],
-  ["rds","Room 11",["Chacha","Chacha's Friend"]],
+  ["rds","Room 11",["Chacha"]],
   ["rds","Room 12",["Arvind Mausa Ji","Kartik"]]
 ];
 const CARS = [
@@ -216,7 +216,7 @@ const CARS = [
   { name:"Suzuki Ertiga 2", people:["Bade Papa","Vineet","Vishwanjay","Vivek"], driver:"Rajesh Kushvaha", phone:"9956143866" },
   { name:"Force Urbania", people:["Chachi","Mummy","Savita Mausi","Badi Mummy","Dolly Mausi","Laksh","Kartik","Raman","Aman"], phone:"9839674740" },
   { name:"Tata Punch", people:["Nitin Bhaiya","Bhabhi","Badi Mummy","Kaushi"], driver:"Vishal Singh", phone:"9919064443" },
-  { name:"Swift Dezire", people:["Chacha","Chacha's Friend"], phone:"8115375794" }
+  { name:"Swift Dezire", people:["Chacha"], phone:"8115375794" }
 ];
 // The two "Badi Mummy" entries: the one in Room 6 travels in the Tata Punch, the one in Room 8 in the Urbania.
 function carFor(name, room) {
@@ -244,13 +244,13 @@ roomsEl.innerHTML = Object.keys(HOTELS).map(h => {
   const guests = rs.reduce((a, r) => a + r[2].length, 0);
   return `<div class="stay">
     <div class="stay-head"><img src="${HOTEL_IMG[h]}" alt="" class="${h==='gd'?'gd':''}"><div><h3>${HOTELS[h]}</h3><div class="muted">${guests} Guests · ${rs.length} Rooms</div></div></div>
-    ${rs.map(r => `<div class="room"><div><b>${r[1]}</b><div class="muted">${r[2].length} Guests</div></div><div class="chips">${r[2].map(p => `<span data-name="${esc(p)}">${esc(p)}</span>`).join("")}</div></div>`).join("")}
+    ${rs.map(r => `<div class="room"><div><b>${r[1]}</b><div class="muted">${r[2].length} ${r[2].length===1?"Guest":"Guests"}</div></div><div class="chips">${r[2].map(p => `<span data-name="${esc(p)}">${esc(p)}</span>`).join("")}</div></div>`).join("")}
   </div>`;
 }).join("");
 
 // Cars
 document.getElementById("cars").innerHTML = CARS.map(c => `<div class="car">
-  <div class="car-top"><h3>${c.name}</h3><span class="muted">${c.people.length} Travellers</span></div>
+  <div class="car-top"><h3>${c.name}</h3><span class="muted">${c.people.length} ${c.people.length===1?"Traveller":"Travellers"}</span></div>
   <div class="chips">${c.people.map(p => `<span>${esc(p)}</span>`).join("")}</div>
   ${c.phone ? `<div class="driver">Driver${c.driver ? `: <b>${c.driver}</b>` : ""}</div><div class="actions">${phoneBlock(c.phone, "Call")}</div>` : ""}
 </div>`).join("");
