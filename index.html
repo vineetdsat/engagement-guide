@@ -184,7 +184,7 @@ footer { text-align:center; color:var(--muted); font-size:.8rem; }
         <div class="body"><div class="tag">Rest Stop · Pure Veg</div><h3>Sita Ji Ki Rasoi</h3><div class="muted">Guptarganj, Sultanpur</div>
           <div class="actions" data-phone="6393185071" data-map="https://maps.app.goo.gl/UiyG1Ls4YvziziTd9"></div></div></div>
       <div class="contact"><div class="tag">Home Guard</div><h3>Govind</h3><div class="actions" data-phone="6387791045"></div></div>
-      <div class="contact"><div class="tag">Other Drivers</div><h3>Ertiga 1 · Urbania · Dezire</h3><div class="muted">Numbers to be shared soon</div></div>
+      <div class="contact"><div class="tag">Other Drivers</div><h3>Ertiga 1 · Dezire</h3><div class="muted">Numbers to be shared soon</div></div>
     </div>
   </section>
 
@@ -215,7 +215,7 @@ const ROOMS = [
 const CARS = [
   { name:"Suzuki Ertiga 1", people:["Papa","Shubhi Didi","Pranu","Bhoomi"] },
   { name:"Suzuki Ertiga 2", people:["Bade Papa","Vineet","Vishwanjay","Vivek"], driver:"Rajesh Kushvaha", phone:"9956143866" },
-  { name:"Force Urbania", people:["Chachi","Mummy","Savita Mausi","Badi Mummy","Dolly Mausi","Laksh","Kartik","Raman","Aman"] },
+  { name:"Force Urbania", people:["Chachi","Mummy","Savita Mausi","Badi Mummy","Dolly Mausi","Laksh","Kartik","Raman","Aman"], phone:"9839674740" },
   { name:"Tata Punch", people:["Nitin Bhaiya","Bhabhi","Badi Mummy","Kaushi"], driver:"Vishal Singh", phone:"9919064443" },
   { name:"Swift Dezire", people:["Chacha","Chacha's Friend"] }
 ];
@@ -253,7 +253,7 @@ roomsEl.innerHTML = Object.keys(HOTELS).map(h => {
 document.getElementById("cars").innerHTML = CARS.map(c => `<div class="car">
   <div class="car-top"><h3>${c.name}</h3><span class="muted">${c.people.length} Travellers</span></div>
   <div class="chips">${c.people.map(p => `<span>${esc(p)}</span>`).join("")}</div>
-  ${c.driver ? `<div class="driver">Driver: <b>${c.driver}</b></div><div class="actions">${phoneBlock(c.phone, "Call")}</div>` : ""}
+  ${c.phone ? `<div class="driver">Driver${c.driver ? `: <b>${c.driver}</b>` : ""}</div><div class="actions">${phoneBlock(c.phone, "Call")}</div>` : ""}
 </div>`).join("");
 
 // Search
